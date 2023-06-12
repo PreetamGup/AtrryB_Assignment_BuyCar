@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import {Modal, Form, Input, InputNumber, Select, Button} from 'antd';
 
 import axios from 'axios'
@@ -11,7 +11,7 @@ const EditPage = () => {
   const [carToBeEdit, setcarToBeEdit] = useState({})
   
 
-  const handleDelete=async(carId)=>{
+  const handleDelete=useCallback(async(carId)=>{
     console.log("inDelete")
     try {
       const res= await axios.delete(`https://backend-buycar-atrryb.onrender.com/api/car/removecar/${carId}`,{
@@ -26,14 +26,12 @@ const EditPage = () => {
         window.alert("Something went wrong")
       }
 
-      
-
     } catch (error) {
       console.log(error)
       window.alert("Backend error")
     }
    
-  }
+  },[])
 
 
   const handleSubmit =async(value)=>{

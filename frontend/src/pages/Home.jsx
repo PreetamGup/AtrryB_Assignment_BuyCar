@@ -14,7 +14,7 @@ const Home = () => {
     const getData=async()=>{
      try {
       
-      const response= await axios.get('http://localhost:5050/api/car/allcardetails',{
+      const response= await axios.get('https://backend-buycar-atrryb.onrender.com/api/car/allcardetails',{
         headers:{
           Authorization : "Bearer " + localStorage.getItem('token')
         }

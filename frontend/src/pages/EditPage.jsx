@@ -39,7 +39,7 @@ const EditPage = () => {
   const handleSubmit =async(value)=>{
     setIsModalOpen(false)
     try {
-      const response= await axios.put('http://localhost:5050/api/car/updatecardetails',{...value,_id:carToBeEdit._id},{
+      const response= await axios.put('https://backend-buycar-atrryb.onrender.com/api/car/updatecardetails',{...value,_id:carToBeEdit._id},{
         headers:{
           Authorization : "Bearer " + localStorage.getItem('token')
         }
@@ -65,7 +65,7 @@ const EditPage = () => {
     
     const getData=async()=>{
       
-      const response= await axios.get('http://localhost:5050/api/car/carsbydealers',{
+      const response= await axios.get('https://backend-buycar-atrryb.onrender.com/api/car/carsbydealers',{
         headers:{
           Authorization : "Bearer " + localStorage.getItem('token')
         }

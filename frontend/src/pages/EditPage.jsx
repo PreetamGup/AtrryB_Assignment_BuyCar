@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import {Modal, Form, Input, InputNumber, Select, Button} from 'antd';
 
 import axios from 'axios'
@@ -11,7 +11,7 @@ const EditPage = () => {
   const [carToBeEdit, setcarToBeEdit] = useState({})
   
 
-  const handleDelete=useCallback(async(carId)=>{
+  const handleDelete=async(carId)=>{
     console.log("inDelete")
     try {
       const res= await axios.delete(`https://backend-buycar-atrryb.onrender.com/api/car/removecar/${carId}`,{
@@ -30,8 +30,10 @@ const EditPage = () => {
       console.log(error)
       window.alert("Backend error")
     }
+
+    getData()
    
-  },[])
+  }
 
 
   const handleSubmit =async(value)=>{
@@ -47,34 +49,29 @@ const EditPage = () => {
         window.alert(response.data.message)
       }
 
-      
-       
-  
-
     } catch (error) {
-      
+      console.log(error)
     }
+    getData()
+  }
+
+  const getData=async()=>{
+      
+    const response= await axios.get('https://backend-buycar-atrryb.onrender.com/api/car/carsbydealers',{
+      headers:{
+        Authorization : "Bearer " + localStorage.getItem('token')
+      }
+    })
+    setCarData(response.data.allCarsByDealer)
+  
   }
 
 
-
-
   useEffect(()=>{
-    
-    const getData=async()=>{
-      
-      const response= await axios.get('https://backend-buycar-atrryb.onrender.com/api/car/carsbydealers',{
-        headers:{
-          Authorization : "Bearer " + localStorage.getItem('token')
-        }
-      })
-      setCarData(response.data.allCarsByDealer)
-    
-    }
 
     getData()
 
-  },[handleDelete])
+  },[])
 
 
   return (

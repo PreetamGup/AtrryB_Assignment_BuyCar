@@ -1,13 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import CarCard from '../component/CarCard'
 import axios from 'axios'
-import { useContext } from 'react';
-import { Context } from '../component/context';
+// import { useContext } from 'react';
+// import { Context } from '../component/context';
 
 const Home = () => {
     
   const [allCars, setAllCars] = useState([])
-  const OemData= useContext(Context)
+  // const OemData= useContext(Context)
 
 
   useEffect(() => {

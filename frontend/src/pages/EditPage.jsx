@@ -14,7 +14,7 @@ const EditPage = () => {
   const handleDelete=async(carId)=>{
     console.log("inDelete")
     try {
-      const res= await axios.delete(`http://localhost:5050/api/car/removecar/${carId}`,{
+      const res= await axios.delete(`https://backend-buycar-atrryb.onrender.com/api/car/removecar/${carId}`,{
         headers:{
           Authorization : "Bearer " + localStorage.getItem('token')
         }
